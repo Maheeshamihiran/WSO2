@@ -1,0 +1,406 @@
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  font-family: Arial, sans-serif;
+
+}
+
+.navbar {
+  background:linear-gradient(#5e90bf,#02529c) ;
+  color: white;
+  padding: 1rem 2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+
+.mode-btn{
+  padding: 10px 20px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  transform: translateY(100%);
+  position: absolute;
+  left:2%;
+  
+}
+
+.nav-brand {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.nav-links {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  gap: 2rem;
+}
+
+.nav-links a {
+  color: white;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.nav-links a:hover {
+  color: #ff7300;
+}
+
+.hero-section {
+  height: 80vh;
+  width: 100%;
+  background-image: url('./images/hg.jpg');
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.hero-tagline {
+  position: absolute;
+  left: 2%;
+  top: 50%;
+  transform: translateY(-90%);
+  color: white;
+  font-size: 2rem;
+  font-weight: bold;
+  max-width: 500px;
+  text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+}
+
+.weather-container {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 20px;
+  flex: 1;
+  
+  
+  
+
+}
+
+h1 {
+  text-align: center;
+  color: #901f1f;
+  margin-bottom: 30px;
+}
+
+.city-buttons {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+  padding-top: 30px;
+}
+
+.city-btn {
+  padding: 10px 20px;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 14px;
+  
+}
+.weather-section{
+
+  max-width: 100%;
+}
+
+.city-btn:hover {
+  background: #0056b3;
+}
+
+.custom-city {
+  display: flex;
+  gap: 10px;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.city-input {
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 14px;
+  width: 300px;
+}
+
+.search-btn {
+  padding: 10px 20px;
+  background: #28a745;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.search-btn:hover {
+  background: #1e7e34;
+}
+
+.loading {
+  text-align: center;
+  color: #666;
+  font-size: 18px;
+}
+
+.error {
+  text-align: center;
+  color: #dc3545;
+  background: #f8d7da;
+  padding: 10px;
+  border-radius: 5px;
+  margin: 20px 0;
+}
+
+.weather-card {
+  color: white;
+  background:linear-gradient(#02529c,#5e90bf) ;
+  padding: 30px;
+  border-radius: 15px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  width: 200px;
+  margin: 0 auto;
+  opacity: 0.6;
+ 
+ 
+
+}
+
+
+
+.weather-card h2 {
+  margin: 0 0 20px 0;
+  font-size: 28px;
+  
+}
+
+.weather-info {
+  display: grid;
+  gap: 15px;
+}
+
+.temp {
+  font-size: 48px;
+  font-weight: bold;
+  margin: 10px 0;
+}
+
+.condition {
+  font-size: 24px;
+  margin: 10px 0;
+}
+
+.humidity {
+  font-size: 18px;
+  opacity: 0.9;
+}
+
+.timestamp {
+  font-size: 14px;
+  opacity: 0.8;
+  margin-top: 15px;
+}
+
+
+
+
+ /* Container for the marine cards */
+        .marine-cards-container {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 25px;
+            justify-content: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        /* Individual marine card styling */
+        .marine-card, .marine-cards {
+            background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+            border-radius: 18px;
+            padding: 25px;
+            box-shadow: 0 10px 30px rgba(0, 82, 155, 0.15);
+            flex: 1;
+            min-width: 300px;
+            max-width: 400px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            border: 1px solid rgba(0, 119, 190, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .marine-card:hover, .marine-cards:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 35px rgba(0, 82, 155, 0.2);
+        }
+        
+        /* Card header styles */
+        .marine-card h3, .marine-cards h3 {
+            color: #0052a3;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            font-weight: 600;
+            text-align: center;
+            padding-bottom: 12px;
+            border-bottom: 2px solid rgba(0, 119, 190, 0.2);
+            position: relative;
+        }
+        
+        .marine-card h3:after, .marine-cards h3:after {
+            content: '';
+            position: absolute;
+            bottom: -2px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 2px;
+            background: linear-gradient(to right, #0077be, #00a1ff);
+        }
+        
+        /* Data items styling */
+        .marine-data {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+        
+        .data-item {
+            display: flex;
+            justify-content: space-between;
+            padding: 12px 15px;
+            background-color: rgba(0, 119, 190, 0.05);
+            border-radius: 10px;
+            transition: background-color 0.3s ease;
+        }
+        
+        .data-item:hover {
+            background-color: rgba(0, 119, 190, 0.1);
+        }
+        
+        .data-item strong {
+            color: #004987;
+            font-weight: 600;
+        }
+        
+        /* Safety info styling */
+        .safety-info {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+        
+        .safety-info p {
+            padding: 15px;
+            border-radius: 12px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+        }
+        
+        /* Specific color styles for warnings */
+        .safety-info p[style*="color: red"] {
+            background-color: rgba(255, 0, 0, 0.08);
+            border-left: 4px solid #ff3b30;
+        }
+        
+        .safety-info p[style*="color: orange"] {
+            background-color: rgba(255, 149, 0, 0.08);
+            border-left: 4px solid #ff9500;
+        }
+        
+        .safety-info p[style*="color: green"] {
+            background-color: rgba(76, 217, 100, 0.08);
+            border-left: 4px solid #4cd964;
+        }
+        
+        /* Decorative wave pattern */
+        .marine-card:before, .marine-cards:before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(to right, #0077be, #00a1ff, #0077be);
+            border-radius: 18px 18px 0 0;
+        }
+        
+        /* Responsive adjustments */
+        @media (max-width: 768px) {
+            .marine-cards-container {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .marine-card, .marine-cards {
+                min-width: 100%;
+            }
+        }
+        
+        /* Animation for data items */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .data-item {
+            animation: fadeIn 0.5s ease-out;
+        }
+        
+        .data-item:nth-child(1) { animation-delay: 0.1s; }
+        .data-item:nth-child(2) { animation-delay: 0.2s; }
+        .data-item:nth-child(3) { animation-delay: 0.3s; }
+        .data-item:nth-child(4) { animation-delay: 0.4s; }
+
+.footer {
+  background: #070707;
+  color: white;
+  text-align: center;
+  padding: 2rem;
+  margin-top: auto;
+}
+
+.footer-content h3 {
+  margin: 0 0 1rem 0;
+  color: #295800;
+}
+
+.footer-content p {
+  margin: 0;
+  opacity: 0.8;
+}
+
+.announcement-item, .news-item {
+  background: #f8f9fa;
+  padding: 1rem;
+  margin: 1rem 0;
+  border-radius: 5px;
+  border-left: 4px solid #007bff;
+}
+
+.announcement-item h3, .news-item h3 {
+  margin: 0 0 0.5rem 0;
+  color: #333;
+}
+
+.announcement-item p, .news-item p {
+  margin: 0;
+  color: #666;
+}
