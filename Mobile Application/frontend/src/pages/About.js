@@ -1,15 +1,19 @@
 import React from 'react';
+<<<<<<< HEAD
 import './About.css';
 import weatherVideo from '../images/weather.mp4';
 import  dr from '../images/dr.jpg';
 import experts from '../images/experts.jpg';
 import communication from '../images/communication.jpg';
 import real from '../images/real.jpg';
+=======
+>>>>>>> cacb93a8f4b095054d0ae631c8b397fdcd943a34
 
 const About = () => {
   return (
     <div className="weather-container">
       <h1>About Us</h1>
+<<<<<<< HEAD
       <p>We combine weather data, technology, and human insight to improve lives and businesses.</p>
       <p>We provide real-time weather data for cities around the globe.</p>
       <video src={weatherVideo} autoPlay loop muted />
@@ -45,6 +49,10 @@ const About = () => {
           <p>Get instant notifications about changing weather conditions with our advanced monitoring systems.</p>
         </div>
       </div>
+=======
+      <p>Welcome to Weather Info Service - your reliable source for accurate weather information worldwide.</p>
+      <p>We provide real-time weather data for cities around the globe.</p>
+>>>>>>> cacb93a8f4b095054d0ae631c8b397fdcd943a34
     </div>
   );
 };

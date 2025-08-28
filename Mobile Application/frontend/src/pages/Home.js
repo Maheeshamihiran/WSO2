@@ -142,7 +142,26 @@ const Home = () => {
             {isMarineMode ? 'Switch to Weather' : 'Switch to Marine Weather'}
           </button>
         </div>
+<<<<<<< HEAD
       </div>
+=======
+
+        <div className='squre'>
+
+         <div class="box">
+               <div class="inner">
+                    <span>worldwide include heavy rains, storms, and heatwaves, with authorities 
+                      issuing alerts for public safety and climate monitoring. </span>
+               </div>
+         
+            </div>
+        </div>
+        
+      </div>
+
+
+     
+>>>>>>> cacb93a8f4b095054d0ae631c8b397fdcd943a34
       
       <div className="weather-container">
        
