@@ -82,10 +82,8 @@
   margin: 0 auto;
   padding: 20px;
   flex: 1;
-<<<<<<< HEAD
-=======
+
   margin-top: 20px;
->>>>>>> cacb93a8f4b095054d0ae631c8b397fdcd943a34
   
   
   
@@ -178,7 +176,7 @@ h1 {
   box-shadow: 0 4px 15px rgba(0,0,0,0.2);
   width: 200px;
   margin: 0 auto;
-  opacity: 0.6;
+ 
  
  
 
@@ -407,8 +405,6 @@ h1 {
 .announcement-item p, .news-item p {
   margin: 0;
   color: #666;
-<<<<<<< HEAD
-=======
 }
 
 .squre{
@@ -438,6 +434,119 @@ h1 {
 	font-family: sans-serif;
 	font-weight: bold;
 	white-space: nowrap;
+	overflow: hidden;
+}
+
+/* Astronomical Cards Styling */
+.astro-section {
+  margin: 40px 0;
+}
+
+.astro-cards-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 20px;
+  max-width: 1000px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.astro-card {
+  background: linear-gradient(135deg, #ffffff 0%, #f8f9fa 100%);
+  border-radius: 20px;
+  padding: 25px;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 82, 155, 0.15);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(0, 119, 190, 0.1);
+  position: relative;
+  overflow: hidden;
+}
+
+.astro-card:before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  border-radius: 20px 20px 0 0;
+}
+
+.astro-card.sunrise:before {
+  background: linear-gradient(to right, #ff9500, #ffb347);
+}
+
+.astro-card.sunset:before {
+  background: linear-gradient(to right, #ff6b6b, #ee5a52);
+}
+
+.astro-card.moonrise:before {
+  background: linear-gradient(to right, #4a90e2, #74b9ff);
+}
+
+.astro-card.moonset:before {
+  background: linear-gradient(to right, #6c5ce7, #a29bfe);
+}
+
+.astro-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 35px rgba(0, 82, 155, 0.25);
+}
+
+.astro-icon {
+  font-size: 3rem;
+  margin-bottom: 15px;
+  display: block;
+}
+
+.astro-card h3 {
+  color: #0052a3;
+  margin: 0 0 15px 0;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.astro-time {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+}
+
+@media (max-width: 768px) {
+  .astro-cards-container {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px;
+    padding: 0 15px;
+  }
+  
+  .astro-card {
+    padding: 20px 15px;
+  }
+  
+  .astro-icon {
+    font-size: 2.5rem;
+  }
+  
+  .astro-time {
+    font-size: 1.3rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .astro-cards-container {
+    grid-template-columns: 1fr;
+  }
+
+
+
+}
+
+.box .inner{line-height: 30px;
+	font-size: 2.0em;
+	font-family: sans-serif;
+	font-weight: bold;
+	white-space: nowrap;
   
 	overflow: hidden;
 }
@@ -456,7 +565,7 @@ h1 {
 
 .box .inner span {
 	position: absolute;
-	animation: marquee 10s linear infinite;
+	animation: marquee 20s linear infinite;
 }
 
 .box .inner:first-child span {
@@ -473,5 +582,4 @@ h1 {
 	to {
 		left: -100%;
 	}
->>>>>>> cacb93a8f4b095054d0ae631c8b397fdcd943a34
 }

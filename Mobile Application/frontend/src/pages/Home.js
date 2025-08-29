@@ -36,6 +36,27 @@ const Home = () => {
       if (!response.ok) throw new Error('Weather data not found');
       const data = await response.json();
       
+      // Get astronomical data from backend
+      try {
+        const astroResponse = await fetch(`http://localhost:9090/astronomical/${cityName}`);
+        if (astroResponse.ok) {
+          const astroData = await astroResponse.json();
+          data.astronomical = astroData;
+        } else {
+          throw new Error('Astronomical data not available');
+        }
+      } catch (astroErr) {
+        console.warn('Failed to fetch astronomical data from backend');
+        // Fallback mock data
+        const now = Date.now() / 1000;
+        data.astronomical = {
+          sunrise: now - (now % 86400) + 6 * 3600,
+          sunset: now - (now % 86400) + 18 * 3600,
+          moonrise: now - (now % 86400) + 20 * 3600,
+          moonset: now - (now % 86400) + 5 * 3600
+        };
+      }
+      
       data.daily = generateForecastData(data);
       setWeatherData(data);
     } catch (err) {
@@ -142,9 +163,7 @@ const Home = () => {
             {isMarineMode ? 'Switch to Weather' : 'Switch to Marine Weather'}
           </button>
         </div>
-<<<<<<< HEAD
-      </div>
-=======
+     
 
         <div className='squre'>
 
@@ -157,11 +176,10 @@ const Home = () => {
             </div>
         </div>
         
-      </div>
+       </div>
 
 
      
->>>>>>> cacb93a8f4b095054d0ae631c8b397fdcd943a34
       
       <div className="weather-container">
        
@@ -229,6 +247,38 @@ const Home = () => {
               </div>
             ))}
           </div>
+
+          {/* Astronomical Data Cards */}
+          {weatherData.astronomical && (
+            <div className="astro-section">
+              <h2 style={{textAlign: 'center', color: '#0052a3', margin: '30px 0 20px 0'}}>Sun & Moon</h2>
+              <div className="astro-cards-container">
+                <div className="astro-card sunrise">
+                  <div className="astro-icon">🌅</div>
+                  <h3>Sunrise</h3>
+                  <div className="astro-time">{new Date(weatherData.astronomical.sunrise * 1000).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</div>
+                </div>
+                
+                <div className="astro-card sunset">
+                  <div className="astro-icon">🌇</div>
+                  <h3>Sunset</h3>
+                  <div className="astro-time">{new Date(weatherData.astronomical.sunset * 1000).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</div>
+                </div>
+                
+                <div className="astro-card moonrise">
+                  <div className="astro-icon">🌙</div>
+                  <h3>Moonrise</h3>
+                  <div className="astro-time">{new Date(weatherData.astronomical.moonrise * 1000).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</div>
+                </div>
+                
+                <div className="astro-card moonset">
+                  <div className="astro-icon">🌚</div>
+                  <h3>Moonset</h3>
+                  <div className="astro-time">{new Date(weatherData.astronomical.moonset * 1000).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</div>
+                </div>
+              </div>
+            </div>
+          )}
             
             <div className="timestamp">
               Updated: {new Date(weatherData.timestamp || Date.now()).toLocaleString()}
