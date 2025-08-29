@@ -1,0 +1,3 @@
+openWeatherMapKey = "your_openweathermap_api_key_here"
+stormGlassKey = "your_stormglass_api_key_here"
+port = 9090
