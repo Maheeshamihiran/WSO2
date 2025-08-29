@@ -2,6 +2,10 @@ import ballerina/http;
 import ballerina/log;
 import ballerina/time;
 
+configurable string openWeatherMapKey = ?;
+configurable string stormGlassKey = ?;
+configurable int port = 9090;
+
 type WeatherData record {
     string city;
     int temperature;
@@ -40,11 +44,9 @@ type OpenWeatherResponse record {
 
 final http:Client weatherClient = check new ("https://api.openweathermap.org");
 final http:Client stormGlassClient = check new ("https://api.stormglass.io");
-final string API_KEY = "b9c0f85939a74e2ca546e823f747f950";
-final string STORMGLASS_API_KEY = "f6273616-8325-11f0-b41a-0242ac130006-f6273698-8325-11f0-b41a-0242ac130006";
 
 function getWeatherData(string city) returns WeatherData|error {
-    string endpoint = "/data/2.5/weather?q=" + city + "&appid=" + API_KEY + "&units=metric";
+    string endpoint = "/data/2.5/weather?q=" + city + "&appid=" + openWeatherMapKey + "&units=metric";
     json response = check weatherClient->get(endpoint);
     
     string cityName = check response.name;
@@ -65,7 +67,7 @@ function getWeatherData(string city) returns WeatherData|error {
 }
 
 function getWeatherDataByCoords(decimal lat, decimal lng) returns WeatherData|error {
-    string endpoint = "/data/2.5/weather?lat=" + lat.toString() + "&lon=" + lng.toString() + "&appid=" + STORMGLASS_API_KEY+ "&units=metric";
+    string endpoint = "/data/2.5/weather?lat=" + lat.toString() + "&lon=" + lng.toString() + "&appid=" + openWeatherMapKey + "&units=metric";
     json response = check weatherClient->get(endpoint);
     
     string cityName = check response.name;
@@ -89,7 +91,7 @@ function getMarineWeatherData(decimal lat, decimal lng) returns MarineWeatherDat
     string endpoint = "/v2/weather/point?lat=" + lat.toString() + "&lng=" + lng.toString() + "&params=waveHeight,windSpeed,windDirection,waterTemperature";
     
     map<string> headers = {
-        "Authorization": STORMGLASS_API_KEY
+        "Authorization": stormGlassKey
     };
     
     json response = check stormGlassClient->get(endpoint, headers);
@@ -119,7 +121,7 @@ function getMarineWeatherData(decimal lat, decimal lng) returns MarineWeatherDat
 }
 
 function getAstronomicalData(string city) returns AstronomicalData|error {
-    string endpoint = "/data/2.5/weather?q=" + city + "&appid=" + API_KEY + "&units=metric";
+    string endpoint = "/data/2.5/weather?q=" + city + "&appid=" + openWeatherMapKey + "&units=metric";
     json response = check weatherClient->get(endpoint);
     
     json sysData = check response.sys;
@@ -146,7 +148,7 @@ function getAstronomicalData(string city) returns AstronomicalData|error {
         allowMethods: ["GET", "OPTIONS"]
     }
 }
-service /weather on new http:Listener(9090) {
+service /weather on new http:Listener(port) {
     
     resource function get [string city]() returns WeatherData|error {
         return getWeatherData(city);
@@ -178,6 +180,6 @@ service /weather on new http:Listener(9090) {
 }
 
 public function main() returns error? {
-    log:printInfo("Weather Info Service started on port 8080");
-    log:printInfo("Replace 'b9c0f85939a74e2ca546e823f747f950' with actual OpenWeatherMap API key");
+    log:printInfo("Weather Info Service started on port " + port.toString());
+    log:printInfo("Make sure to configure API keys in Config.toml");
 }
