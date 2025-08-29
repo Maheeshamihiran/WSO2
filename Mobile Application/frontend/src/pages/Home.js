@@ -32,39 +32,28 @@ const Home = () => {
     setError(null);
     setMarineData(null);
     try {
-      // First get basic weather data
       const response = await fetch(`http://localhost:9090/weather/${cityName}`);
       if (!response.ok) throw new Error('Weather data not found');
       const data = await response.json();
       
-      // Get astronomical data from OpenWeatherMap API
-      const API_KEY = 'your_openweather_api_key'; // Replace with your API key
+      // Get astronomical data from backend
       try {
-        const geoResponse = await fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${cityName}&limit=1&appid=${API_KEY}`);
-        const geoData = await geoResponse.json();
-        
-        if (geoData.length > 0) {
-          const { lat, lon } = geoData[0];
-          const astroResponse = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=${API_KEY}`);
+        const astroResponse = await fetch(`http://localhost:9090/astronomical/${cityName}`);
+        if (astroResponse.ok) {
           const astroData = await astroResponse.json();
-          
-          data.astronomical = {
-            sunrise: astroData.sys.sunrise,
-            sunset: astroData.sys.sunset,
-            // Mock moonrise/moonset for demo (OpenWeatherMap doesn't provide this)
-            moonrise: astroData.sys.sunrise + 12 * 3600, // 12 hours after sunrise
-            moonset: astroData.sys.sunset + 6 * 3600    // 6 hours after sunset
-          };
+          data.astronomical = astroData;
+        } else {
+          throw new Error('Astronomical data not available');
         }
       } catch (astroErr) {
-        console.warn('Failed to fetch astronomical data, using mock data');
+        console.warn('Failed to fetch astronomical data from backend');
         // Fallback mock data
         const now = Date.now() / 1000;
         data.astronomical = {
-          sunrise: now - (now % 86400) + 6 * 3600,  // 6 AM today
-          sunset: now - (now % 86400) + 18 * 3600,  // 6 PM today
-          moonrise: now - (now % 86400) + 20 * 3600, // 8 PM today
-          moonset: now - (now % 86400) + 5 * 3600    // 5 AM today
+          sunrise: now - (now % 86400) + 6 * 3600,
+          sunset: now - (now % 86400) + 18 * 3600,
+          moonrise: now - (now % 86400) + 20 * 3600,
+          moonset: now - (now % 86400) + 5 * 3600
         };
       }
       

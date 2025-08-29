@@ -20,6 +20,13 @@ type MarineWeatherData record {
     string timestamp;
 };
 
+type AstronomicalData record {
+    int sunrise;
+    int sunset;
+    int moonrise;
+    int moonset;
+};
+
 type OpenWeatherResponse record {
     record {
         decimal temp;
@@ -111,6 +118,26 @@ function getMarineWeatherData(decimal lat, decimal lng) returns MarineWeatherDat
     };
 }
 
+function getAstronomicalData(string city) returns AstronomicalData|error {
+    string endpoint = "/data/2.5/weather?q=" + city + "&appid=" + API_KEY + "&units=metric";
+    json response = check weatherClient->get(endpoint);
+    
+    json sysData = check response.sys;
+    int sunrise = check sysData.sunrise;
+    int sunset = check sysData.sunset;
+    
+    // Calculate mock moonrise/moonset based on sunrise/sunset
+    int moonrise = sunrise + 12 * 3600; // 12 hours after sunrise
+    int moonset = sunset + 6 * 3600;    // 6 hours after sunset
+    
+    return {
+        sunrise: sunrise,
+        sunset: sunset,
+        moonrise: moonrise,
+        moonset: moonset
+    };
+}
+
 @http:ServiceConfig {
     cors: {
         allowOrigins: ["*"],
@@ -143,6 +170,10 @@ service /weather on new http:Listener(9090) {
     
     resource function get marine(decimal lat, decimal lng) returns WeatherData|error {
         return getWeatherDataByCoords(lat, lng);
+    }
+    
+    resource function get astronomical/[string city]() returns AstronomicalData|error {
+        return getAstronomicalData(city);
     }
 }
 
