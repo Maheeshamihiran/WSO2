@@ -1,5 +1,4 @@
 import React from 'react';
-<<<<<<< HEAD
 import './Announcement.css';
 
 const Announcement = () => {
@@ -57,20 +56,6 @@ const Announcement = () => {
             <p>{announcement.content}</p>
           </div>
         ))}
-=======
-
-const Announcement = () => {
-  return (
-    <div className="weather-container">
-      <h1>Announcements</h1>
-      <div className="announcement-item">
-        <h3>Service Update</h3>
-        <p>Weather data is now updated every 15 minutes for better accuracy.</p>
-      </div>
-      <div className="announcement-item">
-        <h3>New Cities Added</h3>
-        <p>We've expanded our coverage to include more cities worldwide.</p>
->>>>>>> cacb93a8f4b095054d0ae631c8b397fdcd943a34
       </div>
     </div>
   );

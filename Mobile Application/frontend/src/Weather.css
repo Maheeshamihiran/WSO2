@@ -82,10 +82,8 @@
   margin: 0 auto;
   padding: 20px;
   flex: 1;
-<<<<<<< HEAD
-=======
+
   margin-top: 20px;
->>>>>>> cacb93a8f4b095054d0ae631c8b397fdcd943a34
   
   
   
@@ -178,7 +176,7 @@ h1 {
   box-shadow: 0 4px 15px rgba(0,0,0,0.2);
   width: 200px;
   margin: 0 auto;
-  opacity: 0.6;
+ 
  
  
 
@@ -407,8 +405,6 @@ h1 {
 .announcement-item p, .news-item p {
   margin: 0;
   color: #666;
-<<<<<<< HEAD
-=======
 }
 
 .squre{
@@ -456,7 +452,7 @@ h1 {
 
 .box .inner span {
 	position: absolute;
-	animation: marquee 10s linear infinite;
+	animation: marquee 20s linear infinite;
 }
 
 .box .inner:first-child span {
@@ -473,5 +469,4 @@ h1 {
 	to {
 		left: -100%;
 	}
->>>>>>> cacb93a8f4b095054d0ae631c8b397fdcd943a34
 }

@@ -1,16 +1,8 @@
 {
-<<<<<<< HEAD
-  "last_build_time": 1756285104726,
-  "last_update_time": 1756237866581,
+  "last_build_time": 1756463873566,
+  "last_update_time": 1756459225853,
   "distribution_version": "2201.12.8",
   "last_modified_time": {
-    "weather_service": 1756239894006
-=======
-  "last_build_time": 1756389826594,
-  "last_update_time": 1756389826594,
-  "distribution_version": "2201.12.8",
-  "last_modified_time": {
-    "weather_service": 1756286102400
->>>>>>> cacb93a8f4b095054d0ae631c8b397fdcd943a34
+    "weather_service": 1756463372086
   }
 }
