@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import './News.css';
 import fire1 from '../images/fire (1).jpg';
+import fire2 from '../images/fire (2).jpg';
+import flood from '../images/flood.jpg';
 import snow from '../images/snow.jpg';
 import summer from '../images/summer.jpg';
 
@@ -10,6 +12,16 @@ const News = () => {
   const [currentBgIndex, setCurrentBgIndex] = useState(0);
   
   const backgroundImages = [fire1, snow, summer];
+  
+  const getNewsImage = (imageName) => {
+    const imageMap = {
+      'fire (1).jpg': fire1,
+      'fire (2).jpg': fire2,
+      'flood.jpg': flood
+    };
+    console.log('Looking for image:', imageName, 'Found:', imageMap[imageName]);
+    return imageMap[imageName];
+  };
 
   useEffect(() => {
     fetchNews();
@@ -47,7 +59,7 @@ const News = () => {
 
   return (
     <div 
-      className="weather-containers"
+      className="weather-containers-images"
       style={{
         backgroundImage: `url(${backgroundImages[currentBgIndex]})`,
       }}
@@ -63,6 +75,11 @@ const News = () => {
           <div className="news-grid">
             {news.map((item) => (
               <div key={item.id} className="news-item">
+                {item.image && getNewsImage(item.image) && (
+                  <div className="news-image">
+                    <img src={getNewsImage(item.image)} alt={item.title} onError={(e) => e.target.style.display = 'none'} />
+                  </div>
+                )}
                 <h3>{item.title}</h3>
                 <p>{item.content}</p>
                 <span className="news-timestamp">
